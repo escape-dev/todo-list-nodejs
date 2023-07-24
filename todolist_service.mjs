@@ -32,7 +32,16 @@ export class TodoListService {
   }
 
   updateTodoList(request, response) {
-  
+    request.addListener("data", (data) => {
+      const body = JSON.parse(data.toString());
+      
+      if(this.todolist[body.id]) {
+        this.todolist[bodyid] = body.todo;
+      }
+
+      response.write(this.responseJsonTodoList(200, "OK"));
+      response.end();
+    });
   }
 
 }
