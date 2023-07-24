@@ -1,1 +1,1 @@
-# Simple todo list app with node js 
+# Simple CRUD API todo list with node js 
