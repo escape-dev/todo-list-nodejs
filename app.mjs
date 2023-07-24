@@ -12,3 +12,6 @@ const server  = http.createServer((request, response) => {
 });
 
 server.listen(3000);
+
+console.log(`TODO list`)
+console.log(`Server activated at: http://localhost:${3000}`);
