@@ -39,13 +39,15 @@ export class TodoListService {
 
   updateTodoList(request, response) {
     request.addListener("data", (data) => {
-      const body = JSON.parse(data.toString());
+      const body     = JSON.parse(data.toString());
+      const todolist = {
+        id: body.id,
+        todo: body.todo,
+      } 
       
-      if(this.todolist[body.id]) {
-        this.todolist[bodyid] = body.todo;
-      }
+      if(this.todolist[body.id]) this.todolist[body.id] = body.todo;
 
-      response.write(this.responseJsonTodoList(200, "OK"));
+      response.write(this.responseJsonTodoList(200, "OK", todolist));
       response.end();
     });
   }
