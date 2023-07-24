@@ -6,27 +6,33 @@ export class TodoListService {
     return JSON.stringify({
       code: code,
       status: status,
-      data: this.todolist.map((value, index) => {
-        return {
-          id: index,
-          todo: value,
-        }
-      })
+      data: data,
     });
   }
 
   getTodoList(request, response) {
-    response.write(this.responseJsonTodoList(200, "OK"));
+    const todolist = this.todolist.map((value, index) => {
+      return {
+        id: index,
+        todo: value,
+      }
+    });
+
+    response.write(this.responseJsonTodoList(200, "OK", todolist));
     response.end();
   }
 
   createTodoList(request, response) {
     request.addListener("data", (data) => {
-      const body = JSON.parse(data.toString());
+      const body     = JSON.parse(data.toString());
+      const todolist = {
+        id: this.todolist.length,
+        todo: body.todo,
+      }
 
       this.todolist.push(body.todo);
 
-      response.write(this.responseJsonTodoList(200, "OK"));
+      response.write(this.responseJsonTodoList(200, "OK", todolist));
       response.end();
     });
   }
