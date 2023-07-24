@@ -23,12 +23,16 @@ export class TodoListService {
   createTodoList(request, response) {
     request.addListener("data", (data) => {
       const body = JSON.parse(data.toString());
-      
+
       this.todolist.push(body.todo);
 
       response.write(this.responseJsonTodoList(200, "OK"));
       response.end();
     });
+  }
+
+  updateTodoList(request, response) {
+  
   }
 
 }
