@@ -8,7 +8,10 @@ const server  = http.createServer((request, response) => {
   
   if (request.method === "GET") {
     service.getTodoList(request, response);
+  } else if(request.method === "POST") {
+    service.createTodoList(request, response);
   }
+
 });
 
 server.listen(3000);
