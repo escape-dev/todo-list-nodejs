@@ -11,14 +11,14 @@ export class TodoListService {
   }
 
   getTodoList(request, response) {
-    const todolist = this.todolist.map((value, index) => {
+    const todolists = this.todolist.map((value, index) => {
       return {
         id: index,
         todo: value,
       }
     });
 
-    response.write(this.responseJsonTodoList(200, "OK", todolist));
+    response.write(this.responseJsonTodoList(200, "OK", todolists));
     response.end();
   }
 
